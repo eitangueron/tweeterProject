@@ -31,7 +31,7 @@ const Tweeter = function () {
     const getPosts = () => _posts
 
     const addPost = (text) => {
-        _posts.push(
+        _posts.unshift(
             {
                 text: text,
                 id: 'p' + (postIdCounter + 1),
@@ -48,7 +48,6 @@ const Tweeter = function () {
                 _posts.splice(i, 1)
             }
         }
-        postIdCounter--
     }
 
 
@@ -72,7 +71,6 @@ const Tweeter = function () {
                 for (let y in _posts[x].comments) {
                     if (_posts[x].comments[y].id === commentID) {
                         _posts[x].comments.splice(y, 1)
-                        commentIdCounter--
                     }
                 }
             }
