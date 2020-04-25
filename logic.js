@@ -31,15 +31,13 @@ const Tweeter = function () {
     const getPosts = () => _posts
 
     const addPost = (text) => {
-        _posts.unshift(
-            {
-                text: text,
-                id: 'p' + (postIdCounter + 1),
-                comments: [],
-
-            }
-        )
         postIdCounter++
+        let post = {
+                    text: text,
+                    id: 'p' + (postIdCounter),
+                    comments: [],
+                    }
+        _posts.unshift(post)
     }
 
     const removePost = (postID) => {
@@ -54,13 +52,12 @@ const Tweeter = function () {
     const addComment = (postID, text) => {
         for (let j in _posts) {
             if (_posts[j].id === postID) {
-                _posts[j].comments.push(
-                    {
-                        id: 'c' + (commentIdCounter + 1),
-                        text,
-                    }
-                )
                 commentIdCounter++
+                let comment = {
+                            id: 'c' + (commentIdCounter),
+                            text,
+                            }
+                _posts[j].comments.push(comment)
             }
         }
     }

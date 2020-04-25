@@ -21,13 +21,18 @@ $('#posts').on('click','.delete',function(){
 })
 
 $('#posts').on('click','.commentBtn',function(){
-    if($(this).closest('div').find('.addCommentInputBar').val() !== ''){
-        tweeter.addComment($(this).closest('.post').data().id,$(this).closest('div').find('.addCommentInputBar').val())
+    let commentInputBar = $(this).closest('div').find('.addCommentInputBar')
+    let post = $(this).closest('.post').data().id
+    let commentContent = $(this).closest('div').find('.addCommentInputBar').val()
+    if(commentInputBar.val() !== ''){
+        tweeter.addComment(post,commentContent)
         refreshDisplay()
     }
 })
 
 $('#posts').on('click','i',function(){
-    tweeter.removeComment($(this).closest('.post').data().id,$(this).closest('.postComments').data().id)
+    let post = $(this).closest('.post').data().id
+    let comment = $(this).closest('.postComments').data().id
+    tweeter.removeComment(post,comment)
     refreshDisplay()
 })

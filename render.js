@@ -15,7 +15,7 @@ const Renderer = function () {
         for (let i in posts) {
             $('#posts').append(`<div class='post' data-id='${posts[i].id}'>${posts[i].text}</div>`)
             const $post = $('.post:last')
-            $post.append(`<div class='comments' data-id='${posts[i].id} comment'></div>`)
+            $post.append(`<div class='comments' data-id='${posts[i].id} comments'></div>`)
             $post.append('<button class="delete">Delete Post</button>')
             renderComments(posts[i].comments)
         }
